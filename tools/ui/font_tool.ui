@@ -1,0 +1,765 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>FontToolWidget</class>
+ <widget class="QWidget" name="FontToolWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1040</width>
+    <height>720</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1040</width>
+    <height>640</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>LCD Font Tool</string>
+  </property>
+  <layout class="QVBoxLayout" name="mainLayout">
+   <property name="spacing">
+    <number>8</number>
+   </property>
+   <property name="leftMargin">
+    <number>10</number>
+   </property>
+   <property name="topMargin">
+    <number>10</number>
+   </property>
+   <property name="rightMargin">
+    <number>10</number>
+   </property>
+   <property name="bottomMargin">
+    <number>10</number>
+   </property>
+   <item>
+    <widget class="QGroupBox" name="configGroupBox">
+     <property name="title">
+      <string>Input / Output</string>
+     </property>
+     <layout class="QGridLayout" name="configGridLayout">
+      <property name="horizontalSpacing">
+       <number>8</number>
+      </property>
+      <property name="verticalSpacing">
+       <number>6</number>
+      </property>
+      <item row="0" column="0">
+       <widget class="QLabel" name="fontPathLabel">
+        <property name="text">
+         <string>Font</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLabel" name="fontPathValueLabel">
+        <property name="minimumSize">
+         <size>
+          <width>180</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="text">
+         <string>No font selected</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QPushButton" name="browseFontButton">
+        <property name="text">
+         <string>Browse</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <widget class="QLabel" name="fontSizeLabel">
+        <property name="text">
+         <string>Size</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="4">
+       <widget class="QSpinBox" name="fontSizeSpinBox">
+        <property name="minimumSize">
+         <size>
+          <width>84</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="minimum">
+         <number>6</number>
+        </property>
+        <property name="maximum">
+         <number>64</number>
+        </property>
+        <property name="value">
+         <number>16</number>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="5">
+       <widget class="QLabel" name="thresholdLabel">
+        <property name="text">
+         <string>Threshold</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="6">
+       <widget class="QSpinBox" name="thresholdSpinBox">
+        <property name="minimumSize">
+         <size>
+          <width>84</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="minimum">
+         <number>0</number>
+        </property>
+        <property name="maximum">
+         <number>255</number>
+        </property>
+        <property name="value">
+         <number>128</number>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="glyphStoreLabel">
+        <property name="text">
+         <string>Glyphs</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLabel" name="glyphStorePathValueLabel">
+        <property name="minimumSize">
+         <size>
+          <width>180</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="text">
+         <string>No glyphs selected</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QPushButton" name="browseGlyphStoreButton">
+        <property name="text">
+         <string>Browse</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3">
+       <widget class="QLabel" name="outputDirLabel">
+        <property name="text">
+         <string>Output</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="4" colspan="2">
+       <widget class="QLabel" name="outputDirValueLabel">
+        <property name="minimumSize">
+         <size>
+          <width>180</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="text">
+         <string>No output selected</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="6">
+       <widget class="QPushButton" name="browseOutputDirButton">
+        <property name="text">
+         <string>Browse</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QSplitter" name="mainSplitter">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <widget class="QGroupBox" name="charsetGroupBox">
+      <property name="minimumSize">
+       <size>
+        <width>240</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="title">
+       <string>Charset</string>
+      </property>
+      <layout class="QVBoxLayout" name="charsetLayout">
+       <item>
+        <widget class="QPlainTextEdit" name="charsetTextEdit">
+         <property name="placeholderText">
+          <string>Paste required characters here</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="charsetButtonLayout">
+         <item>
+          <widget class="QPushButton" name="loadCharsetFileButton">
+           <property name="text">
+            <string>Load Text</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="applyCharsetButton">
+           <property name="text">
+            <string>Apply</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QLabel" name="charsetSummaryLabel">
+         <property name="text">
+          <string>0 chars</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QScrollArea" name="glyphEditorScrollArea">
+      <property name="minimumSize">
+       <size>
+        <width>330</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="glyphEditorScrollContents">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>360</width>
+         <height>680</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="glyphEditorScrollLayout">
+        <item>
+         <widget class="QGroupBox" name="glyphEditorGroupBox">
+          <property name="title">
+           <string>Glyph Editor</string>
+          </property>
+          <layout class="QVBoxLayout" name="glyphDetailLayout">
+           <property name="spacing">
+            <number>8</number>
+           </property>
+           <item>
+            <layout class="QHBoxLayout" name="glyphInputLayout">
+         <item>
+          <widget class="QLabel" name="glyphInputLabel">
+           <property name="text">
+            <string>Char</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+         <widget class="QLineEdit" name="glyphInputEdit">
+           <property name="minimumSize">
+            <size>
+             <width>72</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maxLength">
+            <number>1</number>
+           </property>
+           <property name="placeholderText">
+            <string>输入一个字</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="loadGlyphButton">
+           <property name="text">
+            <string>Load</string>
+           </property>
+          </widget>
+         </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QFormLayout" name="glyphInfoFormLayout">
+         <item row="0" column="0">
+          <widget class="QLabel" name="glyphCodepointLabel">
+           <property name="text">
+            <string>Codepoint</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLineEdit" name="glyphCodepointEdit">
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="glyphSourceLabel">
+           <property name="text">
+            <string>Source</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QLineEdit" name="glyphSourceEdit">
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QLabel" name="glyphPreviewLabel">
+         <property name="minimumSize">
+          <size>
+           <width>260</width>
+           <height>260</height>
+          </size>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::Box</enum>
+         </property>
+         <property name="text">
+          <string>Glyph grid</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QGridLayout" name="glyphShiftLayout">
+         <item row="0" column="1">
+          <widget class="QPushButton" name="shiftGlyphUpButton">
+           <property name="text">
+            <string>Up</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QPushButton" name="shiftGlyphLeftButton">
+           <property name="text">
+            <string>Left</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QPushButton" name="clearGlyphButton">
+           <property name="text">
+            <string>Clear</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="QPushButton" name="shiftGlyphRightButton">
+           <property name="text">
+            <string>Right</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QPushButton" name="shiftGlyphDownButton">
+           <property name="text">
+            <string>Down</string>
+           </property>
+          </widget>
+         </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QFormLayout" name="glyphMetricFormLayout">
+         <item row="0" column="0">
+          <widget class="QLabel" name="glyphWidthLabel">
+           <property name="text">
+            <string>Width</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QSpinBox" name="glyphWidthSpinBox">
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <number>32</number>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="glyphHeightLabel">
+           <property name="text">
+            <string>Height</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QSpinBox" name="glyphHeightSpinBox">
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <number>32</number>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="glyphAdvanceLabel">
+           <property name="text">
+            <string>Advance</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QSpinBox" name="glyphAdvanceSpinBox">
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <number>64</number>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="glyphXOffsetLabel">
+           <property name="text">
+            <string>X Offset</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QSpinBox" name="glyphXOffsetSpinBox">
+           <property name="minimum">
+            <number>-32</number>
+           </property>
+           <property name="maximum">
+            <number>32</number>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="glyphYOffsetLabel">
+           <property name="text">
+            <string>Y Offset</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QSpinBox" name="glyphYOffsetSpinBox">
+           <property name="minimum">
+            <number>-32</number>
+           </property>
+           <property name="maximum">
+            <number>32</number>
+           </property>
+          </widget>
+         </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QPlainTextEdit" name="glyphRowsEdit">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>70</height>
+          </size>
+         </property>
+         <property name="placeholderText">
+          <string>Glyph rows</string>
+         </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="glyphButtonLayout">
+         <item>
+          <widget class="QPushButton" name="regenerateGlyphButton">
+           <property name="text">
+            <string>Regenerate</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="applyGlyphMetricButton">
+           <property name="text">
+            <string>Apply</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="saveGlyphButton">
+          <property name="text">
+           <string>Save</string>
+          </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="resetGlyphButton">
+           <property name="text">
+            <string>Reset</string>
+           </property>
+          </widget>
+         </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="previewGroupBox">
+     <property name="minimumSize">
+      <size>
+       <width>380</width>
+       <height>0</height>
+      </size>
+     </property>
+      <property name="title">
+       <string>String Preview</string>
+      </property>
+      <layout class="QVBoxLayout" name="previewLayout">
+       <item>
+        <widget class="QPlainTextEdit" name="previewTextEdit">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>90</height>
+          </size>
+         </property>
+         <property name="placeholderText">
+          <string>Type preview strings here</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="lcdPreviewLabel">
+         <property name="minimumSize">
+          <size>
+           <width>384</width>
+           <height>192</height>
+          </size>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::Box</enum>
+         </property>
+         <property name="text">
+          <string>String preview</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="scaledContents">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QGridLayout" name="previewConfigLayout">
+         <item row="0" column="0">
+          <widget class="QLabel" name="lcdWidthLabel">
+           <property name="text">
+            <string>Width</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+         <widget class="QSpinBox" name="lcdWidthSpinBox">
+           <property name="minimumSize">
+            <size>
+             <width>84</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <number>512</number>
+           </property>
+           <property name="value">
+            <number>128</number>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QLabel" name="lcdHeightLabel">
+           <property name="text">
+            <string>Height</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="3">
+         <widget class="QSpinBox" name="lcdHeightSpinBox">
+           <property name="minimumSize">
+            <size>
+             <width>84</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <number>512</number>
+           </property>
+           <property name="value">
+            <number>64</number>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="zoomLabel">
+           <property name="text">
+            <string>Zoom</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1" colspan="3">
+          <widget class="QSlider" name="zoomSlider">
+           <property name="minimum">
+            <number>10</number>
+           </property>
+          <property name="maximum">
+            <number>80</number>
+           </property>
+           <property name="singleStep">
+            <number>1</number>
+           </property>
+           <property name="pageStep">
+            <number>10</number>
+           </property>
+          <property name="value">
+            <number>30</number>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="previewOptionLayout">
+         <item>
+          <widget class="QCheckBox" name="showGridCheckBox">
+           <property name="text">
+            <string>Grid</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="showPageGridCheckBox">
+           <property name="text">
+            <string>Page Grid</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="previewOptionSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="actionGroupBox">
+     <property name="title">
+      <string>Actions</string>
+     </property>
+     <layout class="QVBoxLayout" name="actionRootLayout">
+      <item>
+       <layout class="QHBoxLayout" name="actionButtonLayout">
+        <item>
+         <widget class="QPushButton" name="loadProjectButton">
+          <property name="text">
+           <string>Load Glyphs</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="generateMissingGlyphsButton">
+          <property name="text">
+           <string>Generate Missing</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="validateAllButton">
+          <property name="text">
+           <string>Validate</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="exportFirmwareFontButton">
+          <property name="text">
+           <string>Export Firmware Font</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QTextEdit" name="logTextEdit">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>110</height>
+         </size>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+        <property name="placeholderText">
+         <string>Log</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

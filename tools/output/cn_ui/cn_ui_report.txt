@@ -1,0 +1,49 @@
+LCD UI menu-localization simulation export
+
+Screen: 128x64, visual coordinates, black pixels on white background.
+Style: runtime status pages stay English; menu/config pages use localized industrial short labels.
+Fonts: CJK uses 16x16, ASCII/Cyrillic uses current generated bitmap font.
+Skipped: curve page is language-independent and is not simulated here.
+
+home_status: 运行页 - PASS - missing=0, overflow=0, overlap_pixels=0, density=10.2% - 运行测量页固定英文；多语言仅作用于菜单/参数配置页。
+main_menu: 主菜单 - PASS - missing=0, overflow=0, overlap_pixels=0, density=14.8% - 一级入口使用 4 行滚动布局；候选项不贴左边界，工厂设置在下一屏。
+basic_settings: 基本 - PASS - missing=0, overflow=0, overlap_pixels=0, density=9.4% - 二级菜单通用列表；标题左上，候选项固定缩进。
+display_settings: 显示 - PASS - missing=0, overflow=0, overlap_pixels=0, density=10.1% - 显示/单位/语言类二级菜单，短词优先。
+advanced_settings: 高级 - PASS - missing=0, overflow=0, overlap_pixels=0, density=9.2% - 高级参数入口，适合后续由菜单树自动生成。
+calib_settings: 校准 - PASS - missing=0, overflow=0, overlap_pixels=0, density=9.2% - 校准子菜单，对应固件 DISTCAL/SLOPE/BIAS，其中 DISTCAL 输入真实距离后自动计算偏移。
+algo_settings: 算法 - PASS - missing=0, overflow=0, overlap_pixels=0, density=7.7% - 算法子菜单，对应固件 PKMODE/PKDIST/PKREL/CZTBIN。
+sim_settings: 模拟 - PASS - missing=0, overflow=0, overlap_pixels=0, density=3.5% - 模拟子菜单，对应固件 ISIM。
+service_settings: 服务 - PASS - missing=0, overflow=0, overlap_pixels=0, density=5.1% - 服务类入口，暂时仅保留复位。
+factory_settings: 工厂 - PASS - missing=0, overflow=0, overlap_pixels=0, density=4.2% - 工厂入口目前只有串口，保留后续扩展空间。
+range_value: 量程页 - PASS - missing=0, overflow=0, overlap_pixels=0, density=10.8% - 标题左上 + 数值右对齐；适合低位/高位/量程。
+low_limit_edit: 低位编辑 - PASS - missing=0, overflow=0, overlap_pixels=0, density=3.3% - 低位参数编辑页，固件对应 LLIM。
+high_limit_edit: 高位编辑 - PASS - missing=0, overflow=0, overlap_pixels=0, density=3.5% - 高位参数编辑页，固件对应 HLIM。
+range_edit: 量程编辑 - PASS - missing=0, overflow=0, overlap_pixels=0, density=3.8% - 量程参数编辑页，固件对应 RANGE。
+filter_mode_enum: 滤波模式 - PASS - missing=0, overflow=0, overlap_pixels=0, density=7.0% - 滤波模式枚举；稳定模式抑制静止 1mm 跳动，快速模式保持轻滤波响应。
+edit_value: 距离校准 - PASS - missing=0, overflow=0, overlap_pixels=0, density=5.2% - 输入真实距离，固件按当前测距值自动反算距离校准偏移。
+current_value: 电流页 - PASS - missing=0, overflow=0, overlap_pixels=0, density=11.8% - 短标签 + 高精度数值；用于模拟电流、故障码和偏移显示。
+sim_current_edit: 电流编辑 - PASS - missing=0, overflow=0, overlap_pixels=0, density=7.6% - 模拟电流专用编辑页，对应固件 ISIM。
+slope_edit: 斜率编辑 - PASS - missing=0, overflow=0, overlap_pixels=0, density=3.3% - 斜率专用编辑页，对应固件 SLOPE。
+bias_edit: 偏置编辑 - PASS - missing=0, overflow=0, overlap_pixels=0, density=4.5% - 偏置专用编辑页，对应固件 BIAS。
+peak_distance_edit: 峰距编辑 - PASS - missing=0, overflow=0, overlap_pixels=0, density=2.5% - 峰距编辑页，对应固件 PKDIST。
+peak_threshold_edit: 峰阈编辑 - PASS - missing=0, overflow=0, overlap_pixels=0, density=3.1% - 峰阈编辑页，对应固件 PKREL。
+window_width_edit: 窗宽编辑 - PASS - missing=0, overflow=0, overlap_pixels=0, density=2.3% - 窗宽编辑页，对应固件 CZTBIN。
+unit_enum: 单位选择 - PASS - missing=0, overflow=0, overlap_pixels=0, density=5.7% - 枚举选择页；3 个选项以内可一屏显示。
+mode_enum: 模式选择 - PASS - missing=0, overflow=0, overlap_pixels=0, density=5.1% - 测量模式枚举。
+language_enum: 语言选择 - PASS - missing=0, overflow=0, overlap_pixels=0, density=7.4% - 菜单语言选择页；运行页仍保持英文。
+output_enum: 输出选择 - PASS - missing=0, overflow=0, overlap_pixels=0, density=4.6% - 输出方向枚举。
+switch_enum: 开关选择 - PASS - missing=0, overflow=0, overlap_pixels=0, density=4.2% - 开关类页面可复用于串口输出等参数。
+peak_enum: 峰值选择 - PASS - missing=0, overflow=0, overlap_pixels=0, density=5.9% - 算法峰值模式枚举。
+success: 设置成功 - PASS - missing=0, overflow=0, overlap_pixels=0, density=6.2% - 无边框居中提示；适合短暂结果提示。
+factory_reset: 恢复出厂 - PASS - missing=0, overflow=0, overlap_pixels=0, density=6.0% - 无边框危险操作确认页，使用短标题 + 明确结果。
+
+Summary
+pages: 31
+PASS: 31
+CHECK: 0
+FAIL: 0
+missing glyphs: none
+used chars: %+.012345ACDIMSTimst中串位低俄值偏关准出前功务区单厂厘反口后向启基复定宽峰工开式强当快恢成拟择故文料斜显服校模正毫法波流滤率电盲础确示离移程稍稳窗算米级置英菜言认设语请距输选速量闭阈障首高
+
+Labels
+基础设置 / 显示设置 / 高级设置 / 服务菜单 / 工厂设置 / 低位 / 高位 / 量程 / 滤波模式 / 单位 / 模式 / 语言选择 / 输出 / 校准 / 算法 / 模拟 / 复位 / 串口 / 电流 / 故障 / 峰值 / 峰距 / 峰阈 / 窗宽 / 距离校准 / 偏移 / 斜率 / 偏置 / 距离 / 料位 / 正向 / 反向 / 关闭 / 开启 / 首峰 / 强峰 / 毫米 / 厘米 / 米 / 英文 / 中文 / 俄文 / 稳定 / 快速 / 当前 / 盲区 / 请稍后 / 确认复位 / 设置成功 / 恢复出厂
